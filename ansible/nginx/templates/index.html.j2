@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ inventory_hostname }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3; /* Light grey background */
+            color: #333; /* Dark text */
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #000061;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        h2 {
+            font-size: 1.5em;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        .meme-placeholder {
+            text-align: center;
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px dashed #000061;
+            background-color: #004791; /* Light background for the placeholder */
+            color: white;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            font-size: 0.8em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>{{ inventory_hostname }} instance</h1>
+    </header>
+    <div class="container">
+        <p>API Key: <strong>{{ api_key }}</strong></p>
+        <div class="meme-placeholder">
+            <h3>Quote of the Day</h3>
+            <img src="meme.png" /> 
+        </div>
+    </div>
+    <footer>
+        <p>&copy; {{ current_year }} DevOps - {{ inventory_hostname }} instance</p>
+    </footer>
+</body>
+</html>

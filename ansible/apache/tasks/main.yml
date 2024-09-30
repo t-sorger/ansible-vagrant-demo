@@ -1,0 +1,37 @@
+---
+- name: Ensure Apache HTTP Server is installed
+  yum:
+    name: httpd-2.4.62
+    state: present
+
+- name: Prepare web server service switch
+  import_role:
+    name: webserver_switch
+
+- name: Ensure Apache is started and enabled
+  systemd:
+    name: httpd
+    state: started
+    enabled: yes
+
+- name: Ensure proper permissions on the web root
+  ansible.builtin.file:
+    path: /var/www/html
+    owner: apache
+    group: apache
+    mode: '0755'
+
+- name: Configure firewall for Apache HTTP Server
+  import_role:
+    name: firewall
+
+- name: Copy the meme image to the apache HTML directory
+  copy:
+    src: ../files/meme.png
+    dest: /var/www/html/meme.png
+
+- name: Create a custom index page
+  template:
+    src: index.html.j2
+    dest: /var/www/html/index.html
+    force: yes

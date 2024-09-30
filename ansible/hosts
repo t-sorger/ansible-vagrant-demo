@@ -1,0 +1,9 @@
+[webservers]
+prod ansible_host=192.168.56.101 api_key="prod-4212CBCB8462A49BD6741A2D186585AE"
+dev ansible_host=192.168.56.102 api_key="dev-D9F816F9E005CF2BC7FC7405059EA96B"
+infra ansible_host=192.168.56.103 api_key="infra-739C02A8A682FF6B74D1BC957B512361"
+
+[webservers:vars]
+ansible_user=vagrant
+ansible_private_key_file=.vagrant/machines/{{ inventory_hostname }}/virtualbox/private_key
+ansible_python_interpreter=/usr/bin/python3
