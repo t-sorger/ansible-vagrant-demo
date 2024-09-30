@@ -1,0 +1,25 @@
+---
+- name: Ensure firewalld is installed and enabled
+  package:
+    name: firewalld
+    state: present
+
+- name: Ensure firewalld is started and enabled
+  service:
+    name: firewalld
+    state: started
+    enabled: true
+
+- name: Open HTTP and HTTPS ports for apache
+  firewalld:
+    service: "{{ item }}"
+    permanent: true
+    state: enabled
+  loop:
+    - http
+    - https
+
+- name: Reload firewalld to apply changes
+  service:
+    name: firewalld
+    state: reloaded

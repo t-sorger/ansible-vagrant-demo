@@ -1,0 +1,14 @@
+---
+- name: Stop Nginx if running
+  ansible.builtin.systemd:
+    name: nginx
+    state: stopped
+  ignore_errors: true
+  when: inventory_hostname == "infra"
+
+- name: Stop Apache (httpd) if running
+  ansible.builtin.systemd:
+    name: httpd
+    state: stopped
+  ignore_errors: true
+  when: inventory_hostname == "infra"

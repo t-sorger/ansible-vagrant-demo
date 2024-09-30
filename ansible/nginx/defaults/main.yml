@@ -1,0 +1,4 @@
+---
+# Default variable for dynamic content
+api_key: "default_key"
+current_year: "{{ ansible_date_time.year }}"
